@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="section">
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column is-4">
+            <h2 class="title is-2"> Registered Courses! </h2>
+        <div class="field">
+	  	    <div class="control">
+	            <p><strong>Name:</strong> <%= @teacher.name %></p>
+                <p><strong>Discipline: </strong>  <%= @teacher.discipline %></p>
+                <p>
+                    <% @teacher.courses.each do |item| %>
+                        <div class="box">
+                        <p> <%= item.name %> <%= link_to 'De-Register', tregistration_path(teacher_id: @teacher.id, course_id: item.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'button is-warning is-small is-pulled-right' %></p>
+                        </div>
+                    <% end %>
+                </p>
+	  	    </div>
+		</div>
+        <%= link_to 'Back', root_path %>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+

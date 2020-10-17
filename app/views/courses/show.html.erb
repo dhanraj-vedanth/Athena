@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="section">
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column is-4">
+            <h2 class="title is-2"> More on the Course! </h2>
+        <div class="field">
+	  	    <div class="control">
+          <div class="box">
+	            <p><strong>Name:</strong> <%= @course.name %></p>
+              <p><strong>Course Number: </strong>  <%= @course.course_no %></p>
+              <p><strong>Discipline: </strong>  <%= @course.discipline %></p>
+              <p><strong>Area: </strong>  <%= @course.area %></p>
+              <p><strong>Price: </strong>  <%= @course.price %></p>
+              <p><strong>Available teachers: </strong> 
+                <% @course.teachers.each do |teacher| %>
+                  <p> Dr. <%= teacher.name %> </p>
+                  <% if admin_signed_in? %>
+                    <p> <%= button_to 'Add to cart', line_items_path(course_id: @course, teacher_id: teacher.id), class: 'button is-warning is-small add-to-cart' %> </p>
+                  <% end %>
+                  <% if student_signed_in? && current_student.major == @course.discipline %>
+                    <p> <%= button_to 'Add to cart', line_items_path(course_id: @course, teacher_id: teacher.id), class: 'button is-warning is-small add-to-cart' %> </p>
+                  <% end %>
+                <% end %>
+              </p>
+              <% if teacher_signed_in? %>
+                <% if current_teacher.discipline == @course.discipline %>
+                  <p> <%= button_to 'Register for this course!', tregistrations_path(course_id: @course, teacher_id: current_teacher.id),  class: 'button is-warning is-small add-to-cart' %>   </p>
+                <% end %>
+              <% end %>
+              <br>
+              <%= link_to 'Edit', edit_course_path(@course), class: 'button is-warning is-small'%> |
+              <%= link_to 'Back', courses_path, class: 'button is-warning is-small' %>
+              </div>
+	  	    </div>
+		</div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="section">
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column is-4">
+            <h2 class="title is-2"> History! </h2>
+        <div class="field">
+	  	    <div class="control">
+                <p>
+                    <% @histories.each do |item| %>
+                        <div class="box">
+                        <p> <%= item.student_name%></p>
+                        <p> <%= item.teacher_name%></p>
+                        <p> <%= item.course_name%></p>
+                        </div>
+                    <% end %>
+                </p>
+	  	    </div>
+		</div>
+        <%= link_to 'Back', root_path %>
+        </div>
+    </div>
+</div>
+</div>

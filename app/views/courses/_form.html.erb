@@ -1,0 +1,20 @@
+<div class="columns is-mobile is-centered">
+  <div class="column is-half">
+    <%= simple_form_for(@course) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+    <%= f.input :name, label: "Course Name", wrapper: false, label_html: {class: "label"}, placeholder: "Name of the course?", autofocus: true%>
+    <%= f.input :course_no, label: "Course Number", wrapper: false, label_html: {class: "label"}, placeholder: "Course Number?", autofocus: true%>
+    <%= f.input :discipline, label: "Discipline", wrapper: false, label_html: {class: "label"}, placeholder: "Discipline?", autofocus: true%>
+    <%= f.input :area, label: "Area", wrapper: false, label_html: {class: "label"}, placeholder: "Area?", autofocus: true%>
+    <%= f.input :price, label: "Price", wrapper: false, label_html: {class: "label"}, placeholder: "Price", autofocus: true%>
+    </div>
+    <div class="form-actions">
+    <%= f.button :submit, class: "button is-primary is-small" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
